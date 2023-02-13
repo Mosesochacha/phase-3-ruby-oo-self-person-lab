@@ -58,7 +58,36 @@ class Person
       def call_friend(friend)
              friend.happiness +=3 
              self.happiness +=3
-             "Hi Felix! It's Stella. How are you?"
+
+            #  " Hi #{name.friend}! it's #{name.self} How are you"
+             "Hi #{friend.name}! It's #{self.name}. How are you?"
       end
 
+
+      def start_conversation (friend , topic)
+         if topic = politics
+          friend.happiness -=2
+          self.happiness -=2
+          "blah blah partisan blah lobbyist"
+          elsif topic = weather
+            friend.happiness += 1
+            self.happiness += 1
+            "blah blah sun blah rain"
+            else
+              "blah blah blah blah blah"
+            end
+      end
+    
+
+      def start_conversation(friend , topic)
+        if topic == "politics"
+          [friend , self].each {|person| person.happiness -=2}
+          return 'blah blah partisan blah lobbyist' 
+      elsif topic == "weather"
+          [friend , self].map {|person| person.happiness +=1}
+          return 'blah blah sun blah rain'
+      else
+          return 'blah blah blah blah blah'
+      end
+      end
 end
